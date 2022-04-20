@@ -61,9 +61,9 @@ class image_gui():
     
         print(e.keycode)
         if(e.keycode==38):
-            self.sizeup()
+            pass
         if(e.keycode==40):
-            self.sizedown()
+            pass
 
     def button1_clicked(self):  
         
@@ -132,11 +132,11 @@ class image_gui():
 
 
 
-        button9 = tk.Button(sub, text = 'フォント大（↑）', command=self.sizeup)
+        button9 = tk.Button(sub, text = 'フォント大', command=self.sizeup)
         button9.grid(row=0, column=1)  
         button9.place(x=700, y=480) 
 
-        button10 = tk.Button(sub, text = 'フォント小（↓）', command=self.sizedown)
+        button10 = tk.Button(sub, text = 'フォント小', command=self.sizedown)
         button10.grid(row=0, column=1)  
         button10.place(x=700, y=510) 
 
