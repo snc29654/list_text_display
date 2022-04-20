@@ -23,7 +23,7 @@ import glob
 from tkinter import filedialog as tkFileDialog
 import tkinter as tk
 from tkinter import font
-
+import tkinter.font as tkFont
         
 
 
@@ -33,7 +33,7 @@ class image_gui():
     imgs = []
     def __init__(self, main):  
         self.index_before = 0
-        self.sizerate=1.0
+        self.sizerate=10
         self.n_old=[]
         self.angle=0
         self.filenames =[]
@@ -66,7 +66,6 @@ class image_gui():
             self.sizedown()
 
     def button1_clicked(self):  
-        self.sizerate =txt4.get()
         
 
         ini_dir = 'C:'
@@ -79,7 +78,6 @@ class image_gui():
         self.quit()
 
     def button3_clicked(self):  
-        self.sizerate =txt4.get()
         
 
 
@@ -130,15 +128,15 @@ class image_gui():
 
         sub = tkinter.Tk()
         sub.title("テキストファイルの表示")  
-        sub.geometry("800x600")
+        sub.geometry("1200x600")
 
 
 
-        button9 = tk.Button(sub, text = '拡大（↑）', command=self.sizeup)
+        button9 = tk.Button(sub, text = 'フォント大（↑）', command=self.sizeup)
         button9.grid(row=0, column=1)  
         button9.place(x=700, y=480) 
 
-        button10 = tk.Button(sub, text = '縮小（↓）', command=self.sizedown)
+        button10 = tk.Button(sub, text = 'フォント小（↓）', command=self.sizedown)
         button10.grid(row=0, column=1)  
         button10.place(x=700, y=510) 
 
@@ -191,7 +189,9 @@ class image_gui():
                    height=10)
         text_box.pack()
         text_box.place(x=20, y=20)
+        fontExample = tkFont.Font(family="Courier", size=self.sizerate, weight="normal", slant="roman")
 
+        text_box.configure(font=fontExample)
 
 
         #f = open(n, encoding="utf-8")
@@ -213,12 +213,12 @@ class image_gui():
  
 
     def sizeup(self):
-        self.sizerate = float(self.sizerate) + 0.1
+        self.sizerate = self.sizerate + 1
         self.select_one_image(self.n_old)
 
 
     def sizedown(self):
-        self.sizerate = float(self.sizerate) - 0.1
+        self.sizerate = self.sizerate - 1
         self.select_one_image(self.n_old)
 
 
