@@ -174,14 +174,14 @@ class image_gui():
 
 
 
-        txt2 = tk.Entry(width=50)
-        txt2.place(x=20, y=500)
+        self.txt2 = tk.Entry(width=50)
+        self.txt2.place(x=20, y=500)
 
 
 
 
-        txt2.delete(0, tk.END)
-        txt2.insert(tk.END,n)
+        self.txt2.delete(0, tk.END)
+        self.txt2.insert(tk.END,n)
 
         txt3 = tk.Entry(width=50)
         txt3.place(x=20, y=20)
@@ -216,7 +216,9 @@ class image_gui():
     def sizeup(self):
         get_data=self.text_box.get("1.0", "end")
         print(get_data)
-        fout_utf = open('utf-8.txt', 'w', encoding='utf-8')
+        
+        out_file=self.txt2.get()
+        fout_utf = open(out_file, 'w', encoding='utf-8')
  
         for row in get_data:
             fout_utf.write(row)
