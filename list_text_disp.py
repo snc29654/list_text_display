@@ -52,7 +52,7 @@ class image_gui():
         #文字色、背景色、サイズ、フォントを指定。
         font1 = font.Font(family='Helvetica', size=12, weight='bold')
 
-        label4 = tkinter.Label(root_main, text="予備", fg="red", bg="white", font=font1)
+        label4 = tkinter.Label(root_main, text="Fontサイズ", fg="red", bg="white", font=font1)
         label4.pack(side="top")
         label4.place(x=400, y=28) 
 
@@ -67,6 +67,7 @@ class image_gui():
 
     def button1_clicked(self):  
         
+        self.sizerate = txt4.get();
 
         ini_dir = 'C:'
         ret = tkinter.filedialog.askdirectory(initialdir=ini_dir, title='file dialog test', mustexist = True)
@@ -79,6 +80,7 @@ class image_gui():
 
     def button3_clicked(self):  
         
+        self.sizerate = txt4.get();
 
 
         fTyp = [('', '*')] 
@@ -132,13 +134,13 @@ class image_gui():
 
 
 
-        button9 = tk.Button(sub, text = 'フォント大', command=self.sizeup)
-        button9.grid(row=0, column=1)  
-        button9.place(x=700, y=480) 
+        #button9 = tk.Button(sub, text = 'フォント大', command=self.sizeup)
+        #button9.grid(row=0, column=1)  
+        #button9.place(x=700, y=480) 
 
-        button10 = tk.Button(sub, text = 'フォント小', command=self.sizedown)
-        button10.grid(row=0, column=1)  
-        button10.place(x=700, y=510) 
+        #button10 = tk.Button(sub, text = 'フォント小', command=self.sizedown)
+        #button10.grid(row=0, column=1)  
+        #button10.place(x=700, y=510) 
 
 
 
@@ -152,7 +154,6 @@ class image_gui():
 
 
         sub.bind("<KeyPress>", self.key_handler)
-
 
 
 
@@ -231,7 +232,7 @@ root_main.geometry("850x300")
 
 txt4 = tkinter.Entry(width=10)
 txt4.place(x=330, y=30)
-txt4.insert(tkinter.END,"1.0")
+txt4.insert(tkinter.END,"10")
 
 
 root_main.mainloop()
