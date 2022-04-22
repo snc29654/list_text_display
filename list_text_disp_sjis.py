@@ -134,7 +134,7 @@ class image_gui():
 
 
 
-        button9 = tk.Button(sub, text = 'フォント大', command=self.sizeup)
+        button9 = tk.Button(sub, text = 'ファイル書き込み', command=self.sizeup)
         button9.grid(row=0, column=1)  
         button9.place(x=700, y=480) 
 
@@ -174,37 +174,37 @@ class image_gui():
 
 
 
-        txt2 = tk.Entry(width=50)
-        txt2.place(x=20, y=500)
+        self.txt2 = tk.Entry(width=50)
+        self.txt2.place(x=20, y=500)
 
 
 
 
-        txt2.delete(0, tk.END)
-        txt2.insert(tk.END,n)
+        self.txt2.delete(0, tk.END)
+        self.txt2.insert(tk.END,n)
 
         txt3 = tk.Entry(width=50)
         txt3.place(x=20, y=20)
 
-        text_box = tk.Text(bg="#000", fg="#fff", insertbackground="#fff",
+        self.text_box = tk.Text(bg="#000", fg="#fff", insertbackground="#fff",
                    height=10)
-        text_box.pack()
-        text_box.place(x=20, y=20)
+        self.text_box.pack()
+        self.text_box.place(x=20, y=20)
         fontExample = tkFont.Font(family="Courier", size=self.sizerate, weight="normal", slant="roman")
 
-        text_box.configure(font=fontExample)
+        self.text_box.configure(font=fontExample)
 
 
-        #f = open(n, encoding="utf-8")
+        #f = open(n, encoding="shift_jis")
         #text_data = f.read()
 
-        with open(n,encoding="utf-8") as f:
+        with open(n,encoding="shift_jis") as f:
 
 
             lines = f.readlines()
             for line in lines:
                 print(line, end='')
-                text_box.insert(END, line)
+                self.text_box.insert(END, line)
 
 
         root_one.after(10, lambda: root_one.destroy())
@@ -214,8 +214,16 @@ class image_gui():
  
 
     def sizeup(self):
-        text_box.get()
-
+        get_data=self.text_box.get("1.0", "end")
+        print(get_data)
+        
+        out_file=self.txt2.get()
+        fout_utf = open(out_file, 'w', encoding='shift_jis')
+ 
+        for row in get_data:
+            fout_utf.write(row)
+ 
+        fout_utf.close()
 
     def sizedown(self):
         self.sizerate = self.sizerate - 1
