@@ -27,6 +27,7 @@ import tkinter.font as tkFont
         
 
 
+encode_type="utf-8"
 
 #最初の画面のクラス
 class image_gui():  
@@ -54,7 +55,7 @@ class image_gui():
 
         label4 = tkinter.Label(root_main, text="Fontサイズ", fg="red", bg="white", font=font1)
         label4.pack(side="top")
-        label4.place(x=400, y=28) 
+        label4.place(x=400, y=100) 
 
 
     def key_handler(self,e):
@@ -144,7 +145,7 @@ class image_gui():
 
 
 
-
+        self.encode_type = encode_type
 
 
 
@@ -179,7 +180,6 @@ class image_gui():
 
 
 
-
         self.txt2.delete(0, tk.END)
         self.txt2.insert(tk.END,n)
 
@@ -194,11 +194,10 @@ class image_gui():
 
         self.text_box.configure(font=fontExample)
 
-
         #f = open(n, encoding="utf-8")
         #text_data = f.read()
 
-        with open(n,encoding="utf-8") as f:
+        with open(n,encoding=self.encode_type) as f:
 
 
             lines = f.readlines()
@@ -218,7 +217,7 @@ class image_gui():
         print(get_data)
         
         out_file=self.txt2.get()
-        fout_utf = open(out_file, 'w', encoding='utf-8')
+        fout_utf = open(out_file, 'w', encoding=self.encode_type)
  
         for row in get_data:
             fout_utf.write(row)
@@ -231,6 +230,11 @@ class image_gui():
 
 
 
+def button10_clicked():  
+    global encode_type
+    print(combo.get())
+    encode_type=combo.get()
+
 root_main= tkinter.Tk()  
 c=image_gui(root_main)  
 root_main.title("rootです")  
@@ -238,8 +242,27 @@ root_main.geometry("850x300")
 
 
 txt4 = tkinter.Entry(width=10)
-txt4.place(x=330, y=30)
+txt4.place(x=330, y=100)
 txt4.insert(tkinter.END,"10")
+
+combo = ttk.Combobox(root_main, state='readonly')
+# リストの値を設定
+combo["values"] = ("utf-8","shift_jis","euc_jp")
+# デフォルトの値を食費(index=0)に設定
+combo.current(0)
+# コンボボックスの配置
+combo.pack()
+
+# ボタンの作成（コールバックコマンドには、コンボボックスの値を取得しprintする処理を定義）
+#button = tk.Button(text="表示",command=lambda:print(combo.get()))
+
+button10 = Button(root_main, text=u'エンコードセット', command=button10_clicked)  
+button10.place(x=50, y=50) 
+
+
+
+# ボタンの配置
+#button.pack()
 
 
 root_main.mainloop()
