@@ -67,7 +67,9 @@ class image_gui():
             pass
 
     def button1_clicked(self):  
-        
+        global encode_type
+        encode_type=combo.get()
+
         self.sizerate = txt4.get();
 
         ini_dir = 'C:'
@@ -80,6 +82,8 @@ class image_gui():
         self.quit()
 
     def button3_clicked(self):  
+        global encode_type
+        encode_type=combo.get()
         
         self.sizerate = txt4.get();
 
@@ -256,8 +260,8 @@ combo.pack()
 # ボタンの作成（コールバックコマンドには、コンボボックスの値を取得しprintする処理を定義）
 #button = tk.Button(text="表示",command=lambda:print(combo.get()))
 
-button10 = Button(root_main, text=u'エンコードセット', command=button10_clicked)  
-button10.place(x=50, y=50) 
+#button10 = Button(root_main, text=u'エンコードセット', command=button10_clicked)  
+#button10.place(x=50, y=50) 
 
 
 
