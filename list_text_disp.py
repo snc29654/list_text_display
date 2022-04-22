@@ -55,8 +55,11 @@ class image_gui():
 
         label4 = tkinter.Label(root_main, text="Fontサイズ", fg="red", bg="white", font=font1)
         label4.pack(side="top")
-        label4.place(x=400, y=100) 
+        label4.place(x=150, y=20) 
 
+        label5 = tkinter.Label(root_main, text="エンコード", fg="red", bg="white", font=font1)
+        label5.pack(side="top")
+        label5.place(x=150, y=0) 
 
     def key_handler(self,e):
     
@@ -69,8 +72,8 @@ class image_gui():
     def button1_clicked(self):  
         global encode_type
         encode_type=combo.get()
-
-        self.sizerate = txt4.get();
+        self.font_size=combo1.get()
+        #self.sizerate = txt4.get();
 
         ini_dir = 'C:'
         ret = tkinter.filedialog.askdirectory(initialdir=ini_dir, title='file dialog test', mustexist = True)
@@ -84,8 +87,9 @@ class image_gui():
     def button3_clicked(self):  
         global encode_type
         encode_type=combo.get()
+        self.font_size=combo1.get()
         
-        self.sizerate = txt4.get();
+        #self.sizerate = txt4.get();
 
 
         fTyp = [('', '*')] 
@@ -194,7 +198,7 @@ class image_gui():
                    height=10)
         self.text_box.pack()
         self.text_box.place(x=20, y=20)
-        fontExample = tkFont.Font(family="Courier", size=self.sizerate, weight="normal", slant="roman")
+        fontExample = tkFont.Font(family="Courier", size=self.font_size, weight="normal", slant="roman")
 
         self.text_box.configure(font=fontExample)
 
@@ -245,9 +249,9 @@ root_main.title("rootです")
 root_main.geometry("850x300") 
 
 
-txt4 = tkinter.Entry(width=10)
-txt4.place(x=330, y=100)
-txt4.insert(tkinter.END,"10")
+#txt4 = tkinter.Entry(width=10)
+#txt4.place(x=330, y=100)
+#txt4.insert(tkinter.END,"10")
 
 combo = ttk.Combobox(root_main, state='readonly')
 # リストの値を設定
@@ -256,6 +260,15 @@ combo["values"] = ("utf-8","shift_jis","euc_jp")
 combo.current(0)
 # コンボボックスの配置
 combo.pack()
+
+combo1 = ttk.Combobox(root_main, state='readonly')
+# リストの値を設定
+combo1["values"] = (8,9,10,11,12,14,16,18,20)
+# デフォルトの値を食費(index=0)に設定
+combo1.current(0)
+# コンボボックスの配置
+combo1.pack()
+
 
 # ボタンの作成（コールバックコマンドには、コンボボックスの値を取得しprintする処理を定義）
 #button = tk.Button(text="表示",command=lambda:print(combo.get()))
