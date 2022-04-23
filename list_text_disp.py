@@ -55,11 +55,11 @@ class image_gui():
 
         label4 = tkinter.Label(root_main, text="Fontサイズ", fg="red", bg="white", font=font1)
         label4.pack(side="top")
-        label4.place(x=150, y=20) 
+        label4.place(x=200, y=100) 
 
         label5 = tkinter.Label(root_main, text="エンコード", fg="red", bg="white", font=font1)
         label5.pack(side="top")
-        label5.place(x=150, y=0) 
+        label5.place(x=200, y=60) 
 
     def key_handler(self,e):
     
@@ -259,7 +259,8 @@ combo["values"] = ("utf-8","shift_jis","euc_jp")
 # デフォルトの値を食費(index=0)に設定
 combo.current(0)
 # コンボボックスの配置
-combo.pack()
+combo.place(x=50, y=60)
+#combo.pack()
 
 combo1 = ttk.Combobox(root_main, state='readonly')
 # リストの値を設定
@@ -267,7 +268,8 @@ combo1["values"] = (8,9,10,11,12,14,16,18,20)
 # デフォルトの値を食費(index=0)に設定
 combo1.current(0)
 # コンボボックスの配置
-combo1.pack()
+combo1.place(x=50, y=100)
+#combo1.pack()
 
 
 # ボタンの作成（コールバックコマンドには、コンボボックスの値を取得しprintする処理を定義）
