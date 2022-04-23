@@ -191,6 +191,27 @@ class image_gui():
         self.txt2.delete(0, tk.END)
         self.txt2.insert(tk.END,n)
 
+
+
+        self.txt6 = tk.Entry(width=20)
+        self.txt6.place(x=20, y=520)
+
+
+
+        self.txt6.delete(0, tk.END)
+        self.txt6.insert(tk.END,self.encode_type)
+
+
+        self.txt7 = tk.Entry(width=5)
+        self.txt7.place(x=20, y=540)
+
+
+
+        self.txt7.delete(0, tk.END)
+        self.txt7.insert(tk.END,self.font_size)
+
+
+
         txt3 = tk.Entry(width=50)
         txt3.place(x=20, y=20)
 
