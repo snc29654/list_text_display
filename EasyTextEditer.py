@@ -25,7 +25,7 @@ import tkinter as tk
 from tkinter import font
 import tkinter.font as tkFont
         
-
+from chardet import detect 
 
 encode_type="utf-8"
 
@@ -82,6 +82,12 @@ class image_gui():
 
 
         for name in self.filenames:
+
+            with open(name, 'rb') as f:  # バイナリファイルとしてファイルをオープン
+                b = f.read()  # ファイルの内容を全て読み込む
+
+            enc = detect(b)
+            self.encode_type=enc['encoding']
             with open(name,encoding=self.encode_type) as f:
 
 
