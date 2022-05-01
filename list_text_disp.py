@@ -24,13 +24,14 @@ from tkinter import filedialog as tkFileDialog
 import tkinter as tk
 from tkinter import font
 import tkinter.font as tkFont
+from chardet import detect 
         
 
 
-encode_type="utf-8"
 
 #最初の画面のクラス
 class image_gui():  
+    encode_type="utf-8"
     imgs = []
     def __init__(self, main):  
         self.index_before = 0
@@ -153,7 +154,7 @@ class image_gui():
 
 
 
-        self.encode_type = encode_type
+        #self.encode_type = encode_type
 
 
 
@@ -226,6 +227,14 @@ class image_gui():
         #f = open(n, encoding="utf-8")
         #text_data = f.read()
 
+        with open(n, 'rb') as f:  # バイナリファイルとしてファイルをオープン
+            b = f.read()  # ファイルの内容を全て読み込む
+
+        enc = detect(b)
+        self.encode_type=enc['encoding']
+
+
+
         with open(n,encoding=self.encode_type) as f:
 
 
@@ -259,10 +268,6 @@ class image_gui():
 
 
 
-def button10_clicked():  
-    global encode_type
-    print(combo.get())
-    encode_type=combo.get()
 
 root_main= tkinter.Tk()  
 c=image_gui(root_main)  
