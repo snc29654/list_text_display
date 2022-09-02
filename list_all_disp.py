@@ -120,7 +120,7 @@ class image_gui():
         print("get_index=" + n)
 
 
-    def list_disp(self,sub):
+    def list_disp(self):
     
         frame = tkinter.Frame(master=None)
         scrollbar = tkinter.Scrollbar(master=frame, orient="vertical")
@@ -138,13 +138,13 @@ class image_gui():
         global item, canvas
 
 
-        sub = tkinter.Tk()
-        sub.title("ファイルリスト表示")  
-        sub.geometry("1200x600")
+        self.sub = tkinter.Tk()
+        self.sub.title("ファイルリスト表示")  
+        self.sub.geometry("1200x600")
 
 
 
-        button9 = tk.Button(sub, text = '何もしない', command=self.sizeup)
+        button9 = tk.Button(self.sub, text = '終了', command=self.testend)
         button9.grid(row=0, column=1)  
         button9.place(x=700, y=480) 
 
@@ -159,15 +159,15 @@ class image_gui():
 
 
 
-        self.list_disp(sub)
+        self.list_disp()
 
 
 
-        sub.bind("<KeyPress>", self.key_handler)
+        self.sub.bind("<KeyPress>", self.key_handler)
 
 
 
-        sub.mainloop()
+        self.sub.mainloop()
  
  
 
@@ -250,9 +250,9 @@ class image_gui():
 
  
 
-    def sizeup(self):
+    def testend(self):
 
-        pass
+        self.sub.destroy()
         
         
         
