@@ -116,7 +116,7 @@ class image_gui():
         n = event.widget.get(index)
         self.n_old = n
         value.set(n)
-        #self.select_one_image(n)
+        self.select_one_image(n)
         print("get_index=" + n)
 
 
