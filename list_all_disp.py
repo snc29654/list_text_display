@@ -116,7 +116,7 @@ class image_gui():
         n = event.widget.get(index)
         self.n_old = n
         value.set(n)
-        self.select_one_image(n)
+        #self.select_one_image(n)
         print("get_index=" + n)
 
 
@@ -139,12 +139,12 @@ class image_gui():
 
 
         sub = tkinter.Tk()
-        sub.title("テキストファイルの表示")  
+        sub.title("ファイルリスト表示")  
         sub.geometry("1200x600")
 
 
 
-        button9 = tk.Button(sub, text = 'ファイル書き込み', command=self.sizeup)
+        button9 = tk.Button(sub, text = '何もしない', command=self.sizeup)
         button9.grid(row=0, column=1)  
         button9.place(x=700, y=480) 
 
@@ -178,7 +178,7 @@ class image_gui():
         root_one = tkinter.Tk()
         root_one.title("root_oneです")  
         root_one.geometry("1x1")
-
+        
         frame2 = ttk.Frame(root_one, padding=10)
         frame2.grid()
 
@@ -251,16 +251,14 @@ class image_gui():
  
 
     def sizeup(self):
-        get_data=self.text_box.get("1.0", "end")
-        print(get_data)
+
+        pass
         
-        out_file=self.txt2.get()
-        fout_utf = open(out_file, 'w', encoding=self.encode_type)
- 
-        for row in get_data:
-            fout_utf.write(row)
- 
-        fout_utf.close()
+        
+        
+
+
+
 
     def sizedown(self):
         self.sizerate = self.sizerate - 1
