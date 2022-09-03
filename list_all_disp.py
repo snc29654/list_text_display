@@ -42,11 +42,11 @@ class image_gui():
         
         button1 = Button(root_main, text=u'フォルダー選択', command=self.button1_clicked)  
         button1.grid(row=0, column=1)  
-        button1.place(x=670, y=12) 
+        button1.place(x=100, y=5) 
 
         button3= Button(root_main, text=u'ファイル   選択', command=self.button3_clicked)  
         button3.grid(row=0, column=1)  
-        button3.place(x=670, y=42) 
+        button3.place(x=100, y=30) 
 
 
 
@@ -61,6 +61,9 @@ class image_gui():
         label5 = tkinter.Label(root_main, text="エンコード", fg="red", bg="white", font=font1)
         label5.pack(side="top")
         label5.place(x=200, y=60) 
+
+
+
 
     def key_handler(self,e):
     
@@ -83,7 +86,8 @@ class image_gui():
         #filenames = []
         self.filenames = glob.glob('*.*')
         print(self.filenames)
-        self.quit()
+        self.list_disp()
+        #self.quit()
 
     def button3_clicked(self):  
         global encode_type
@@ -97,7 +101,8 @@ class image_gui():
         iDir = os.path.abspath(os.path.dirname(__file__)) 
         self.filenames = tkFileDialog.askopenfilenames(filetypes= [("All file", ".*")], initialdir=iDir)
         print(self.filenames)
-        self.quit()
+        self.list_disp()
+        #self.quit()
 
 
     def quit(self):
@@ -148,25 +153,9 @@ class image_gui():
         button9.grid(row=0, column=1)  
         button9.place(x=700, y=480) 
 
-        #button10 = tk.Button(sub, text = 'フォント小', command=self.sizedown)
-        #button10.grid(row=0, column=1)  
-        #button10.place(x=700, y=510) 
-
-
-
-        #self.encode_type = encode_type
-
-
-
 
         self.list_disp()
-
-
-
         self.sub.bind("<KeyPress>", self.key_handler)
-
-
-
         self.sub.mainloop()
  
  
@@ -270,7 +259,7 @@ class image_gui():
 root_main= tkinter.Tk()  
 c=image_gui(root_main)  
 root_main.title("rootです")  
-root_main.geometry("850x300") 
+root_main.geometry("850x600") 
 
 
 #txt4 = tkinter.Entry(width=10)
@@ -311,7 +300,7 @@ combo1.place(x=50, y=100)
 root_main.mainloop()
 
 
-thread1 = threading.Thread(target=c.view_image)
-thread1.start()
+#thread1 = threading.Thread(target=c.view_image)
+#thread1.start()
 
     
