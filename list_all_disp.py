@@ -188,7 +188,7 @@ class image_gui():
         self.text_box = tk.Text(bg="#000", fg="#fff", insertbackground="#fff",
                    height=40)
         self.text_box.pack()
-        self.text_box.place(x=20, y=20)
+        self.text_box.place(x=20, y=200)
         fontExample = tkFont.Font(family="Courier", size=self.font_size, weight="normal", slant="roman")
 
         self.text_box.configure(font=fontExample)
