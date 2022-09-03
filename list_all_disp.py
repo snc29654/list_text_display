@@ -139,26 +139,6 @@ class image_gui():
         listbox.bind("<<ListboxSelect>>", self.get_index)
 
 
-    def view_image(self):
-        global item, canvas
-
-
-        self.sub = tkinter.Tk()
-        self.sub.title("ファイルリスト表示")  
-        self.sub.geometry("1200x600")
-
-
-
-        button9 = tk.Button(self.sub, text = '終了', command=self.testend)
-        button9.grid(row=0, column=1)  
-        button9.place(x=700, y=480) 
-
-
-        self.list_disp()
-        self.sub.bind("<KeyPress>", self.key_handler)
-        self.sub.mainloop()
- 
- 
 
 
     def select_one_image(self,n):
