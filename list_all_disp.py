@@ -48,6 +48,9 @@ class image_gui():
         button3.grid(row=0, column=1)  
         button3.place(x=100, y=30) 
 
+        button8= Button(root_main, text=u'リスト削除', command=self.button8_clicked)  
+        button8.grid(row=0, column=1)  
+        button8.place(x=250, y=5) 
 
 
 
@@ -75,6 +78,7 @@ class image_gui():
 
     def button1_clicked(self):  
         global encode_type
+
         encode_type=combo.get()
         self.font_size=combo1.get()
         #self.sizerate = txt4.get();
@@ -91,6 +95,7 @@ class image_gui():
 
     def button3_clicked(self):  
         global encode_type
+
         encode_type=combo.get()
         self.font_size=combo1.get()
         
@@ -104,6 +109,8 @@ class image_gui():
         self.list_disp()
         #self.quit()
 
+    def button8_clicked(self):  
+        self.listbox.destroy()
 
     def quit(self):
         root_main.destroy()
@@ -129,14 +136,14 @@ class image_gui():
     
         frame = tkinter.Frame(master=None)
         scrollbar = tkinter.Scrollbar(master=frame, orient="vertical")
-        listbox = tkinter.Listbox(master=frame,  bg="pink", width=80,height=25, yscrollcommand=scrollbar.set)
+        self.listbox = tkinter.Listbox(master=frame,  bg="pink", width=80,height=25, yscrollcommand=scrollbar.set)
         for name in self.filenames:
-            listbox.insert(tkinter.END, name)
-        scrollbar.config(command=listbox.yview)
+            self.listbox.insert(tkinter.END, name)
+        scrollbar.config(command=self.listbox.yview)
         frame.pack(side=RIGHT, anchor=NW)
         scrollbar.pack(side=tkinter.RIGHT, fill="y")
-        listbox.pack(side=tk.LEFT)
-        listbox.bind("<<ListboxSelect>>", self.get_index)
+        self.listbox.pack(side=tk.LEFT)
+        self.listbox.bind("<<ListboxSelect>>", self.get_index)
 
 
 
