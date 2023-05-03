@@ -8,12 +8,21 @@ from tkinter import filedialog as tkFileDialog
 from PIL import Image, ImageTk
 from chardet import detect 
 import tkinter.font as tkFont
+import glob
 
 class image_gui():
     def __init__(self):  
-        button= ttk.Button(win, text=u'テキストファイル選択', command=self.file_selected)  
+        button= Button(win, text=u'テキストファイル選択', command=self.file_selected)  
         button.pack() 
-        button.place(x=10, y=10) 
+        button.place(x=600, y=30)
+        
+        button1 = Button(win, text=u'フォルダー選択', command=self.dir_selected)  
+        button1.pack()  
+        button1.place(x=600, y=0) 
+        
+        
+        
+         
         self.font_size=10
     #----------------------------------------
     def select_lb(self,event):
@@ -31,6 +40,23 @@ class image_gui():
         #print(self.filenames[0])
      
  
+        txt = StringVar(value=self.filenames)
+        self.lb= Listbox(win, listvariable=txt,width=80,height=6)
+        self.lb.bind('<<ListboxSelect>>', self.select_lb)
+        self.lb.grid(row=0, column=1)
+        self.lb.configure(selectmode="extended")
+        scrollbar = ttk.Scrollbar(win,orient=VERTICAL,command=self.lb.yview)
+        scrollbar.grid(row=0,column=2,sticky=(N,S))
+
+    def dir_selected(self):  
+        global encode_type
+
+        ini_dir = 'C:'
+        ret = tkinter.filedialog.askdirectory(initialdir=ini_dir, title='file dialog test', mustexist = True)
+        print(str(ret))
+        os.chdir(str(ret))
+        self.filenames = glob.glob('*.txt')
+        print(self.filenames)
         txt = StringVar(value=self.filenames)
         self.lb= Listbox(win, listvariable=txt,width=80,height=6)
         self.lb.bind('<<ListboxSelect>>', self.select_lb)
