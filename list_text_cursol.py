@@ -93,8 +93,9 @@ class image_gui():
 
             lines = f.readlines()
             for line in lines:
-                #print(line, end='')
-                self.text_box.insert(END, line)
+                self.text_box.tag_config('color', background="white", foreground="blue")
+                    #print(line, end='')
+                self.text_box.insert(END, line,'color')
 
 
 win = Tk()
