@@ -97,13 +97,16 @@ class image_gui():
 
             lines = f.readlines()
             for line in lines:
-                if(line in match_string):
-                    self.text_box.tag_config('color', background="white", foreground="red")
+                print(line)
+                print(match_string)
+                if((match_string in  line )==True):
+                    self.text_box.tag_config('color_red', background="white", foreground="red")
+                    self.text_box.insert(END, line,'color_red')
                 else:
-                    self.text_box.tag_config('color', background="white", foreground="blue")
+                    self.text_box.tag_config('color_blue', background="white", foreground="blue")
+                    self.text_box.insert(END, line,'color_blue')
                 
                     #print(line, end='')
-                self.text_box.insert(END, line,'color')
 
 
 win = Tk()
