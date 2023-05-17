@@ -97,8 +97,6 @@ class image_gui():
 
             lines = f.readlines()
             for line in lines:
-                print(line)
-                print(match_string)
                 if((match_string in  line )==True):
                     self.text_box.tag_config('color_red', background="white", foreground="red")
                     self.text_box.insert(END, line,'color_red')
