@@ -21,6 +21,10 @@ class image_gui():
         button1.place(x=600, y=0) 
         
         
+        self.txt1 = tkinter.Entry(width=20)
+        self.txt1.place(x=600, y=80)
+        self.txt1.insert(tkinter.END,"検索文字")
+
         
          
         self.font_size=10
@@ -87,13 +91,17 @@ class image_gui():
         self.encode_type=enc['encoding']
 
 
-
+        match_string=self.txt1.get()
         with open(n,encoding=self.encode_type) as f:
 
 
             lines = f.readlines()
             for line in lines:
-                self.text_box.tag_config('color', background="white", foreground="blue")
+                if(line in match_string):
+                    self.text_box.tag_config('color', background="white", foreground="red")
+                else:
+                    self.text_box.tag_config('color', background="white", foreground="blue")
+                
                     #print(line, end='')
                 self.text_box.insert(END, line,'color')
 
