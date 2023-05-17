@@ -14,12 +14,15 @@ class image_gui():
     def __init__(self):  
         button= Button(win, text=u'テキストファイル選択', command=self.file_selected)  
         button.pack() 
-        button.place(x=600, y=30)
+        button.place(x=600, y=28)
         
         button1 = Button(win, text=u'フォルダー選択', command=self.dir_selected)  
         button1.pack()  
         button1.place(x=600, y=0) 
         
+        button2 = Button(win, text=u'検索実行', command=self.exec_match)  
+        button2.pack()  
+        button2.place(x=600, y=55) 
         
         self.txt1 = tkinter.Entry(width=20)
         self.txt1.place(x=600, y=80)
@@ -33,6 +36,7 @@ class image_gui():
         for i in self.lb.curselection():
             print(self.filenames[i])
             self.prev_image(self.filenames[i])
+        self.cur_filename=self.filenames[i]
     #----------------------------------------
 
     def file_selected(self):  
@@ -68,6 +72,10 @@ class image_gui():
         self.lb.configure(selectmode="extended")
         scrollbar = ttk.Scrollbar(win,orient=VERTICAL,command=self.lb.yview)
         scrollbar.grid(row=0,column=2,sticky=(N,S))
+
+
+    def exec_match(self):
+        self.prev_image(self.cur_filename)
 
     def prev_image(self,n):
 
