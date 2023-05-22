@@ -106,8 +106,14 @@ class image_gui():
             lines = f.readlines()
             for line in lines:
                 if((match_string in  line )==True):
+                    index = line.find(match_string)
+                    line = line[:index] + '★' + line[index:]
                     self.text_box.tag_config('color_red', background="white", foreground="red")
                     self.text_box.insert(END, line,'color_red')
+                    
+                    
+                    
+                    
                 else:
                     self.text_box.tag_config('color_blue', background="white", foreground="blue")
                     self.text_box.insert(END, line,'color_blue')
