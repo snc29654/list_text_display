@@ -98,6 +98,8 @@ class image_gui():
         enc = detect(b)
         self.encode_type=enc['encoding']
 
+        self.text_box.tag_config('color_black', background="white", foreground="black")
+        self.text_box.tag_config('color_red', background="white", foreground="red")
 
         match_string=self.txt1.get()
         with open(n,encoding=self.encode_type) as f:
@@ -107,8 +109,6 @@ class image_gui():
             
             for line in lines:
                 if((match_string in  line )==True):
-                    self.text_box.tag_config('color_black', background="white", foreground="black")
-                    self.text_box.tag_config('color_red', background="white", foreground="red")
                     index = line.find(match_string)
 
                     for i in range(len(line)):
@@ -117,11 +117,7 @@ class image_gui():
                             self.text_box.insert(END, line[i],'color_red')
                         else:
                             self.text_box.insert(END, line[i],'color_black')
-                    
-                    
-                    
                 else:
-                    self.text_box.tag_config('color_black', background="white", foreground="black")
                     self.text_box.insert(END, line,'color_black')
                                                     
 
